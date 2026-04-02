@@ -15,14 +15,14 @@ Today I want to share how I built a highly simplified Geometry Dash clone using 
 I started by creating the initial design in Figma. Initially, I wanted to create multiple types of obstacles... but I got tired after building the first one, so I stuck with it. One is enough!
 
 **Physics & Collisions**
-The main question I faced was: *How does the square know it's on the ground or has jumped onto a block?*
+The main question I faced was: How does the square know it's on the ground or has jumped onto a block?
 Horizontally, the player always stands still, while the world simply moves towards them. All calculations happen exclusively vertically.
 
 Every frame, the game does two checks:
 1. By default, the floor is at coordinate zero. But if the loop detects that an obstacle is passing directly under the cube, the game temporarily makes the top edge of that obstacle our new ground.
 2. As soon as the player's calculated height drops below the current ground coordinate, the square has landed.
 
-At this exact moment, I reset the falling speed to zero, clamp the cube to the surface, and rotate to the nearest 90-degree angle - so it stands flat on its face, rather than getting stuck on an edge.
+At this exact moment, I reset the falling speed to zero, clamp the cube to the surface, and rotate to the nearest 90-degree angle so it stands flat on its face, rather than getting stuck on an edge.
 
 **Architecture & Structure**
 I divided the project into logical layers:
